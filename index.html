@@ -1309,13 +1309,18 @@ button {
 // SECRET SCREEN
 function showSecret() {
     showScreen("secretScreen");
-}
 
-function showFinal() {
-    showScreen("finalScreen");
-    createConfetti();
+    const video = document.getElementById("secretVideo");
+
+    video.muted = true;
+    video.currentTime = 0;
+
+    setTimeout(() => {
+        video.play().catch(error => {
+            console.log("Video autoplay blocked:", error);
+        });
+    }, 300);
 }
-    
 /* =========================
    SCREEN SYSTEM
 ========================= */
