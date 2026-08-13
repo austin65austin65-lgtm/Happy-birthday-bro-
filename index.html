@@ -865,9 +865,8 @@ button {
     box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 
-    #secretIntro {
+#secretIntro {
     text-align: center;
-    animation: secretReveal 2.5s ease forwards;
 }
 
 #secretIntro h1 {
@@ -875,47 +874,18 @@ button {
     margin-bottom: 20px;
 }
 
-#secretIntro {
-    text-align: center;
-}
-
-#secretIntro h1,
-#secretIntro p {
-    margin: 15px 0;
-}
-
-#secretIntro h1 {
-    font-size: 38px;
-}
-
 #secretIntro p {
     font-size: 19px;
     line-height: 1.6;
+    margin: 12px 0;
 }
 
-.typing {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    margin-left: auto !important;
-    margin-right: auto !important;
+.typing-cursor {
     border-right: 3px solid #5a3038;
-    animation:
-        typing 2.5s steps(40, end) forwards,
-        blink .7s step-end infinite;
+    animation: cursorBlink .7s step-end infinite;
 }
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink {
+@keyframes cursorBlink {
     50% {
         border-color: transparent;
     }
@@ -1237,19 +1207,13 @@ button {
 
 <div id="secretIntro">
 
-    <h1>Wait... 👀</h1>
+    <h1 id="typingTitle"></h1>
 
-    <p class="typing">
-        Do you think this website is done? 😭
-    </p>
+    <p id="typingLine1"></p>
 
-    <p class="typing">
-        You know I don't have a gift for you...
-    </p>
+    <p id="typingLine2"></p>
 
-    <p class="typing">
-        Only this greeting and this. 💀
-    </p>
+    <p id="typingLine3"></p>
 
 </div>
 
@@ -1381,10 +1345,62 @@ function showSecret() {
     video.style.display = "none";
     intro.style.display = "block";
 
-    setTimeout(() => {
+    const title = document.getElementById("typingTitle");
+    const line1 = document.getElementById("typingLine1");
+    const line2 = document.getElementById("typingLine2");
+    const line3 = document.getElementById("typingLine3");
+
+    title.textContent = "";
+    line1.textContent = "";
+    line2.textContent = "";
+    line3.textContent = "";
+
+    async function typeText(element, text, speed) {
+
+        element.classList.add("typing-cursor");
+
+        for (let i = 0; i < text.length; i++) {
+            element.textContent += text[i];
+
+            await new Promise(resolve => {
+                setTimeout(resolve, speed);
+            });
+        }
+
+        element.classList.remove("typing-cursor");
+    }
+
+    async function startTyping() {
+
+        await typeText(title, "Wait... 👀", 100);
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        await typeText(
+            line1,
+            "Do you think this website is done? 😭",
+            55
+        );
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        await typeText(
+            line2,
+            "You know I don't have a gift for you...",
+            55
+        );
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        await typeText(
+            line3,
+            "Only this greeting and this. 💀",
+            55
+        );
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         intro.style.display = "none";
-
         video.style.display = "block";
 
         video.currentTime = 0;
@@ -1393,9 +1409,10 @@ function showSecret() {
         video.play().catch(error => {
             console.log("Video autoplay blocked:", error);
         });
-
-    }, 2500);
     }
+
+    startTyping();
+}
 /* =========================
    SCREEN SYSTEM
 ========================= */
