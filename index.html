@@ -901,85 +901,61 @@ button {
     }
 }
 
-/* FINAL SCREEN FIX */
-
-#finalScreen .final-photos {
-    z-index: 1;
-}
-
-#finalScreen .final-content {
-    z-index: 10;
-    opacity: 1;
-}
-
-#finalScreen .confetti {
-    z-index: 20;
-    pointer-events: none;
-}
-
+/* CAKE */
 .cake-bottom {
-    position: absolute;
-    left: 50%;
-    bottom: 20%;
-    transform: translateX(-50%);
-    width: 220px;
-    height: 75px;
-    background: #8b573d;
-    border-radius: 12px;
-    z-index: 10;
+    width: 300px;
+    height: 90px;
+    background: #c98f9f;
+    border-radius: 15px 15px 25px 25px;
+    margin: 80px auto 0;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .cake-top {
-    position: absolute;
-    left: 50%;
-    bottom: calc(20% + 65px);
-    transform: translateX(-50%);
-    width: 190px;
-    height: 55px;
-    background: #d98798;
-    border-radius: 12px;
-    z-index: 11;
+    width: 330px;
+    height: 45px;
+    background: #fff4f6;
+    border-radius: 25px;
+    position: relative;
+    margin: -15px auto 0;
+    z-index: 2;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-.cake-top::before,
-.cake-bottom::before {
-    content: "";
-    position: absolute;
-    top: -12px;
-    left: -5px;
-    width: calc(100% + 10px);
-    height: 25px;
-    background: #fff8e9;
-    border-radius: 15px;
-}
-
+/* 15 CANDLES */
 .candle-row {
-    position: absolute;
-    left: 50%;
-    bottom: calc(20% + 115px);
-    transform: translateX(-50%);
-    width: 185px;
+    width: 280px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    z-index: 15;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -25px auto 0;
+    position: relative;
+    z-index: 3;
 }
 
 .mini-candle {
-    position: relative;
-    width: 7px;
-    height: 32px;
-    background: #f5d5dc;
+    width: 10px;
+    height: 35px;
+    background: repeating-linear-gradient(
+        45deg,
+        #f5a6c4,
+        #f5a6c4 5px,
+        #fff 5px,
+        #fff 10px
+    );
     border-radius: 3px;
+    position: relative;
 }
 
+/* Candle flame */
 .mini-candle::before {
     content: "🔥";
     position: absolute;
-    left: 50%;
-    top: -20px;
-    transform: translateX(-50%);
-    font-size: 12px;
+    top: -22px;
+    left: -4px;
+    font-size: 14px;
 }
     
 </style>
