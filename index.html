@@ -1176,7 +1176,7 @@ button {
 <!-- =========================
      SECRET SCREEN
 ========================= -->
-
+    
 <section id="secretScreen" class="screen">
 
     <div class="secret-content">
@@ -1206,7 +1206,7 @@ button {
         >
             Okay okay, END 😭
         </button>
-
+        
     </div>
 
 </section>
@@ -1302,10 +1302,18 @@ button {
 </section>
 
 
-
 <script>
 
+// SECRET SCREEN
+function showSecret() {
+    showScreen("secretScreen");
+}
 
+function showFinal() {
+    showScreen("finalScreen");
+    createConfetti();
+}
+    
 /* =========================
    SCREEN SYSTEM
 ========================= */
