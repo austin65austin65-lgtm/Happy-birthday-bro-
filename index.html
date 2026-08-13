@@ -1312,14 +1312,14 @@ function showSecret() {
 
     const video = document.getElementById("secretVideo");
 
-    video.muted = true;
+    video.muted = false;
     video.currentTime = 0;
 
     setTimeout(() => {
         video.play().catch(error => {
             console.log("Video autoplay blocked:", error);
         });
-    }, 300);
+    }, 100);
 }
 /* =========================
    SCREEN SYSTEM
