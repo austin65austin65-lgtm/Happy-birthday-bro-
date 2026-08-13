@@ -823,7 +823,7 @@ button {
 }    
 
 /* =========================
-   SECRET SCREEN
+   SECRET SCREEN 
 ========================= */
 
 #secretScreen {
@@ -864,6 +864,44 @@ button {
     font-weight: bold;
     box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
+
+    #secretIntro {
+    text-align: center;
+    animation: secretReveal 2.5s ease forwards;
+}
+
+#secretIntro h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+#secretIntro p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin: 12px 0;
+}
+
+@keyframes secretReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) translateY(20px);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.05) translateY(0);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+    }
     
 </style>
 </head>
@@ -1179,15 +1217,20 @@ button {
     
 <section id="secretScreen" class="screen">
 
-    <div class="secret-content">
+    <div id="secretIntro">
 
-        <h1>
-            💀 YOU FOUND IT
-        </h1>
+    <h1>Wait... 👀</h1>
 
-        <p>
-            Bro really thought this website was finished 😭
-        </p>
+    <p>
+        Do you think this website is done? 😭
+    </p>
+
+    <p>
+        You know I don't have a gift for you...
+        only this greeting and this. 💀
+    </p>
+
+    </div>
 
         <video
     class="secret-video"
@@ -1308,19 +1351,30 @@ button {
 
 // SECRET SCREEN
 function showSecret() {
+
     showScreen("secretScreen");
 
     const video = document.getElementById("secretVideo");
+    const intro = document.getElementById("secretIntro");
 
-    video.muted = false;
-    video.currentTime = 0;
+    video.style.display = "none";
+    intro.style.display = "block";
 
     setTimeout(() => {
+
+        intro.style.display = "none";
+
+        video.style.display = "block";
+
+        video.currentTime = 0;
+        video.muted = false;
+
         video.play().catch(error => {
             console.log("Video autoplay blocked:", error);
         });
-    }, 100);
-}
+
+    }, 2500);
+    }
 /* =========================
    SCREEN SYSTEM
 ========================= */
