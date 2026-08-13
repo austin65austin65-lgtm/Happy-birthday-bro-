@@ -875,33 +875,51 @@ button {
     margin-bottom: 20px;
 }
 
+#secretIntro {
+    text-align: center;
+}
+
+#secretIntro h1,
+#secretIntro p {
+    margin: 15px 0;
+}
+
+#secretIntro h1 {
+    font-size: 38px;
+}
+
 #secretIntro p {
     font-size: 19px;
     line-height: 1.6;
-    margin: 12px 0;
 }
 
-@keyframes secretReveal {
-    0% {
-        opacity: 0;
-        transform: scale(0.7) translateY(20px);
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-right: 3px solid #5a3038;
+    animation:
+        typing 2.5s steps(40, end) forwards,
+        blink .7s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
     }
 
-    30% {
-        opacity: 1;
-        transform: scale(1.05) translateY(0);
+    to {
+        width: 100%;
     }
+}
 
-    70% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
+@keyframes blink {
+    50% {
+        border-color: transparent;
     }
-
-    100% {
-        opacity: 0;
-        transform: scale(0.95) translateY(-20px);
-    }
-    }
+}
     
 </style>
 </head>
@@ -1217,20 +1235,23 @@ button {
     
 <section id="secretScreen" class="screen">
 
-    <div id="secretIntro">
+<div id="secretIntro">
 
     <h1>Wait... 👀</h1>
 
-    <p>
+    <p class="typing">
         Do you think this website is done? 😭
     </p>
 
-    <p>
+    <p class="typing">
         You know I don't have a gift for you...
-        only this greeting and this. 💀
     </p>
 
-    </div>
+    <p class="typing">
+        Only this greeting and this. 💀
+    </p>
+
+</div>
 
         <video
     class="secret-video"
