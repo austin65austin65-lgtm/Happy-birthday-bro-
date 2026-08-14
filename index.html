@@ -1495,7 +1495,11 @@ video.currentTime = 0;
             console.log("Video autoplay blocked:", error);
         });
     }
-
+video.addEventListener("ended", () => {
+    document.querySelector(".secret-end-btn").style.display = "block";
+});
+    
+    
     startTyping();
 }
 /* =========================
