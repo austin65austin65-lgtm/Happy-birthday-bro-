@@ -860,6 +860,7 @@ button {
 }
 
 .secret-video {
+    display: none;
     width: 100%;
     max-height: 55vh;
     border-radius: 15px;
@@ -1423,7 +1424,9 @@ function showSecret() {
     const video = document.getElementById("secretVideo");
     const intro = document.getElementById("secretIntro");
 
-    
+    video.addEventListener("ended", () => {
+    document.querySelector(".secret-end-btn").style.display = "block";
+});
     
 video.currentTime = 0;
 
