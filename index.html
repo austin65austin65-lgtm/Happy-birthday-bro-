@@ -1424,9 +1424,11 @@ function showSecret() {
     const intro = document.getElementById("secretIntro");
 
     
-    video.style.display = "block";
+    intro.style.display = "none";
+video.style.display = "block";
 document.querySelector(".secret-end-btn").style.display = "block";
-    intro.style.display = "block";
+
+video.currentTime = 0;
 
     const title = document.getElementById("typingTitle");
     const line1 = document.getElementById("typingLine1");
