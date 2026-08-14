@@ -903,6 +903,69 @@ button {
 }
 
 
+/* =========================
+   PHONE + COMPUTER
+========================= */
+
+.secret-content {
+    width: min(90%, 900px);
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.secret-video {
+    display: block;
+    width: min(100%, 800px);
+    max-height: 65vh;
+    height: auto;
+    margin: 20px auto 0;
+}
+
+.secret-end-btn {
+    display: none;
+    margin: 20px auto 0;
+}
+
+/* PHONE */
+@media (max-width: 600px) {
+    .secret-content {
+        width: 90%;
+    }
+
+    .secret-video {
+        width: 100%;
+        max-height: 55vh;
+    }
+
+    #secretIntro h1 {
+        font-size: 32px;
+    }
+
+    #secretIntro p {
+        font-size: 17px;
+    }
+}
+
+/* COMPUTER */
+@media (min-width: 601px) {
+    .secret-content {
+        width: 80%;
+        max-width: 900px;
+    }
+
+    .secret-video {
+        max-width: 800px;
+    }
+
+    #secretIntro h1 {
+        font-size: 42px;
+    }
+
+    #secretIntro p {
+        font-size: 21px;
+    }
+}
     
 </style>
 </head>
@@ -1355,12 +1418,14 @@ function showSecret() {
 
     showScreen("secretScreen");
 
-    document.querySelector(".secret-end-btn").style.display = "block";
+    document.querySelector(".secret-end-btn").style.display = "none";
     
     const video = document.getElementById("secretVideo");
     const intro = document.getElementById("secretIntro");
 
-    video.style.display = "none";
+    
+    video.style.display = "block";
+document.querySelector(".secret-end-btn").style.display = "block";
     intro.style.display = "block";
 
     const title = document.getElementById("typingTitle");
