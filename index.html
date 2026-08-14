@@ -318,38 +318,39 @@ button {
         155px 5px #fff8e9;
 }
 
-/* 15 CANDLES */
-.candle-row {
-    position: absolute;
-    left: 50%;
-    bottom: calc(20% + 115px);
-    transform: translateX(-50%);
-    width: 185px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    z-index: 15;
+.candles-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: -8px; /* Sitting nicely on top of the cake */
 }
 
-.mini-candle {
-    position: relative;
-    width: 7px;
-    height: 32px;
-    background: repeating-linear-gradient(
-        0deg,
-        white 0 7px,
-        #f0bfc9 7px 11px
-    );
-    border-radius: 3px;
+.candle {
+  width: 8px;
+  height: 35px;
+  background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+  border-radius: 4px;
+  position: relative;
 }
 
-.mini-candle::before {
-    content: "🔥";
-    position: absolute;
-    left: 50%;
-    top: -20px;
-    transform: translateX(-50%);
-    font-size: 12px;
+/* Flame */
+.candle::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 12px;
+  background: #ffb703;
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 8px #ffb703;
+  animation: flicker 0.8s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(0.9); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
 }
 
 /* CAKE MESSAGE */
