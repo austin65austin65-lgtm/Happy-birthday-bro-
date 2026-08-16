@@ -1427,6 +1427,9 @@ function showSecret() {
     const video = document.getElementById("secretVideo");
     const intro = document.getElementById("secretIntro");
 
+     video.style.display = "none";
+intro.style.display = "block";
+    
     video.addEventListener("ended", () => {
     document.querySelector(".secret-end-btn").style.display = "block";
 });
