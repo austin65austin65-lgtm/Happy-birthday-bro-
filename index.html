@@ -319,14 +319,15 @@ button {
 }
 
 .candles-row {
+    position: absolute;
+    left: 50%;
+    bottom: calc(20% + 120px);
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-bottom: -8px;
-    position: relative;
-    top: 165px;
-    z-index: 10;
-}
+    z-index: 12;
+    }
 
 .candle {
     width: 8px;
