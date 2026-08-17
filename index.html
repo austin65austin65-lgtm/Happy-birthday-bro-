@@ -987,6 +987,41 @@ button {
         font-size: 21px;
     }
 }
+
+/* BIRTHDAY DATE LOCK */
+#birthdayLock {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8dce3;
+    text-align: center;
+    padding: 25px;
+}
+
+#birthdayLock .lock-content {
+    width: min(90%, 500px);
+}
+
+#birthdayLock h1 {
+    font-size: clamp(28px, 7vw, 48px);
+    margin-bottom: 15px;
+}
+
+#birthdayLock p {
+    font-size: clamp(16px, 4vw, 21px);
+    line-height: 1.5;
+}
+
+#countdown {
+    font-size: clamp(22px, 6vw, 36px);
+    font-weight: bold;
+    margin-top: 20px;
+}
     
 </style>
 </head>
@@ -994,6 +1029,13 @@ button {
 
 <body>
 
+    <div id="birthdayLock">
+    <div class="lock-content">
+        <h1>Not yet 👀</h1>
+        <p>Come back on August 18...</p>
+        <div id="countdown">Loading...</div>
+    </div>
+    </div>
 
 <!-- =========================
      OPENING
@@ -1685,6 +1727,32 @@ function createConfetti() {
 
 }
 
+const birthdayDate = new Date("2026-08-18T00:00:00+08:00");
+
+function checkBirthdayLock() {
+    const now = new Date();
+    const lock = document.getElementById("birthdayLock");
+    const countdown = document.getElementById("countdown");
+
+    const difference = birthdayDate - now;
+
+    if (difference <= 0) {
+        lock.style.display = "none";
+        return;
+    }
+
+    const days = Math.floor(difference / 86400000);
+    const hours = Math.floor((difference / 3600000) % 24);
+    const minutes = Math.floor((difference / 60000) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
+
+    countdown.textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+checkBirthdayLock();
+setInterval(checkBirthdayLock, 1000);
+    
 </script>
 
 </body>
